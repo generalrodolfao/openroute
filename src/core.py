@@ -12,7 +12,7 @@ Fluxo:
 
 from typing import Optional
 
-from src.config import DEFAULT_PROVIDER, DEFAULT_MODEL, FALLBACK_PROVIDER, FALLBACK_MODEL, LOCAL_FALLBACK
+from src.config import FALLBACK_PROVIDER, FALLBACK_MODEL, LOCAL_FALLBACK
 from src.cache import get_cache
 from src.providers import PROVIDERS, LLMResponse
 from src.router import select_route
@@ -72,7 +72,7 @@ class OpenRoute:
             response = self._try_provider(messages, FALLBACK_PROVIDER, FALLBACK_MODEL)
 
         if response is None and LOCAL_FALLBACK:
-            print(f"[openroute] Fallback local (ollama)")
+            print("[openroute] Fallback local (ollama)")
             response = self._try_provider(messages, "ollama", "llama3")
 
         if response is None:

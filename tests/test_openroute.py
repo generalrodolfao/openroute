@@ -135,7 +135,7 @@ class TestProviders:
     def test_calc_cost(self):
         from src.providers import _calc_cost
         cost = _calc_cost("gpt-4o-mini", input_tokens=1000, output_tokens=500)
-        assert cost == 0.15 * 0.00015 + 0.5 * 0.00060  # = 0.00045 (adjusted)
+        assert cost == 1 * 0.00015 + 0.5 * 0.00060  # = 0.00045
         assert cost > 0
 
     def test_model_pricing_exists(self):

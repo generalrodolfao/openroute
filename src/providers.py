@@ -6,7 +6,6 @@ Cada provider expõe a mesma interface:
 """
 
 from dataclasses import dataclass
-from typing import Optional
 
 from src.config import OPENAI_API_KEY, ANTHROPIC_API_KEY, OLLAMA_BASE_URL
 

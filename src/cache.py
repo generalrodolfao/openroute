@@ -21,14 +21,13 @@ def _cosine_sim(a: list[float], b: list[float]) -> float:
 
 
 def _embed(text: str) -> list[float]:
-    """Embedding simples baseado em character n-grams (sem dependência externa)."""
     text = text.lower().strip()
     ngrams = set()
     for n in range(2, 5):
         for i in range(len(text) - n + 1):
             ngrams.add(text[i:i + n])
     chars = sorted(ngrams)
-    vec = [hash(c) % 10000 / 10000.0 for c in chars]
+    vec = [int(hashlib.md5(c.encode()).hexdigest(), 16) % 10000 / 10000.0 for c in chars]
     if not vec:
         return [0.0] * 64
     if len(vec) < 64:

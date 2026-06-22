@@ -9,12 +9,15 @@ Classes de roteamento:
   - analysis: análise de dados → modelo com tool use
 """
 
-from typing import Callable
-from src.config import DEFAULT_PROVIDER, DEFAULT_MODEL
-
 ROUTING_RULES = {
     "simple": {
         "keywords": ["o que é", "quem é", "onde", "quando", "defina", "significado"],
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+    },
+    "code": {
+        "keywords": ["código", "função", "implemente", "debug", "refatore",
+                      "teste", "algoritmo", "sql", "python", "javascript"],
         "provider": "openai",
         "model": "gpt-4o-mini",
     },
@@ -24,23 +27,17 @@ ROUTING_RULES = {
         "provider": "openai",
         "model": "gpt-4o",
     },
+    "analysis": {
+        "keywords": ["análise", "analise", "métrica", "kpi", "dashboard", "relatório",
+                      "estatística", "tendência", "comparativo"],
+        "provider": "openai",
+        "model": "gpt-4o",
+    },
     "creative": {
         "keywords": ["crie", "escreva", "gere", "invente", "história", "poema",
                       "roteiro", "título", "slogan"],
         "provider": "anthropic",
         "model": "claude-3-sonnet-20240229",
-    },
-    "code": {
-        "keywords": ["código", "função", "implemente", "debug", "refatore",
-                      "teste", "algoritmo", "sql", "python", "javascript"],
-        "provider": "openai",
-        "model": "gpt-4o-mini",
-    },
-    "analysis": {
-        "keywords": ["análise", "métrica", "kpi", "dashboard", "relatório",
-                      "estatística", "tendência", "comparativo"],
-        "provider": "openai",
-        "model": "gpt-4o",
     },
 }
 
