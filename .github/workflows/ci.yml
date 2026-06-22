@@ -11,22 +11,13 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - run: pip install ruff
+      - run: pip3 install ruff
       - run: ruff check src/ examples/
 
   test:
     runs-on: self-hosted
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip install -r requirements.txt
-      - run: pip install pytest pytest-cov
+      - run: pip3 install -r requirements.txt
+      - run: pip3 install pytest pytest-cov
       - run: pytest tests/ -v --cov=src --cov-report=term-missing
