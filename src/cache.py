@@ -22,17 +22,15 @@ def _cosine_sim(a: list[float], b: list[float]) -> float:
 
 def _embed(text: str) -> list[float]:
     text = text.lower().strip()
-    ngrams = set()
+    vec = [0.0] * 64
     for n in range(2, 5):
         for i in range(len(text) - n + 1):
-            ngrams.add(text[i:i + n])
-    chars = sorted(ngrams)
-    vec = [int(hashlib.md5(c.encode()).hexdigest(), 16) % 10000 / 10000.0 for c in chars]
-    if not vec:
+            idx = int(hashlib.md5(text[i:i+n].encode()).hexdigest(), 16) % 64
+            vec[idx] += 1.0
+    total = sum(vec)
+    if total == 0:
         return [0.0] * 64
-    if len(vec) < 64:
-        vec = vec * (64 // len(vec) + 1)
-    return vec[:64]
+    return [v / total for v in vec]
 
 
 class MemoryCache:

@@ -21,15 +21,15 @@ ROUTING_RULES = {
         "provider": "openai",
         "model": "gpt-4o-mini",
     },
-    "reasoning": {
-        "keywords": ["por que", "como funciona", "explique", "compare", "diferença",
-                      "qual a relação", "analise"],
-        "provider": "openai",
-        "model": "gpt-4o",
-    },
     "analysis": {
         "keywords": ["análise", "analise", "métrica", "kpi", "dashboard", "relatório",
                       "estatística", "tendência", "comparativo"],
+        "provider": "openai",
+        "model": "gpt-4o",
+    },
+    "reasoning": {
+        "keywords": ["por que", "como funciona", "explique", "compare", "diferença",
+                      "qual a relação", "analise"],
         "provider": "openai",
         "model": "gpt-4o",
     },

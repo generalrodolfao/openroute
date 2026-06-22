@@ -8,7 +8,7 @@ from src.config import SIMILARITY_THRESHOLD, CACHE_TTL, COST_LIMIT_DAILY
 
 class TestConfig:
     def test_defaults(self):
-        assert SIMILARITY_THRESHOLD == 0.92
+        assert SIMILARITY_THRESHOLD == 0.75
         assert CACHE_TTL == 3600
         assert COST_LIMIT_DAILY == 10.0
 
