@@ -14,6 +14,19 @@ Roteia chamadas de LLM para o melhor modelo com base no **tipo da pergunta**, re
 
 ---
 
+## Por que OpenRoute?
+
+| Problema | Solução OpenRoute |
+|---|---|
+| Toda query vai pro modelo mais caro | Classifica a query e roteia pro modelo certo: simples → mini, complexo → pro |
+| Queries repetidas consomem crédito | Cache semântico: queries similares retornam do cache sem chamar API |
+| API fora do ar quebra o pipeline | Fallback automático: OpenAI → Anthropic → Ollama (local) |
+| Custo invisível até o fim do mês | Rastreio de custo por query/modelo/provider + limite diário configurável |
+
+OpenRoute **não** é um proxy universal como OpenRouter.ai ou LiteLLM. É um **roteador inteligente** que decide *qual* modelo usar baseado no *conteúdo* da query, não apenas no preço.
+
+---
+
 ## Funcionalidades
 
 | Funcionalidade | Descrição |
@@ -36,6 +49,19 @@ Roteia chamadas de LLM para o melhor modelo com base no **tipo da pergunta**, re
 | `creative` | "Escreva um poema" | Anthropic | claude-3-sonnet | Alto |
 | `code` | "Crie uma função" | OpenAI | gpt-4o-mini | Baixo |
 | `analysis` | "Analise esses dados" | OpenAI | gpt-4o | Médio |
+
+---
+
+## Comparação com alternativas
+
+| | OpenRoute | OpenRouter.ai | LiteLLM |
+|---|---|---|---|
+| Roteamento por conteúdo | ✅ | ❌ (preço) | ❌ (preço) |
+| Cache semântico | ✅ | ❌ | ❌ |
+| Fallback automático | ✅ | ✅ | ✅ |
+| Rastreio de custo | ✅ | ✅ | ✅ |
+| Self-hosted | ✅ | ❌ (SaaS) | ✅ |
+| Ollama (local) | ✅ | ❌ | ✅ |
 
 ---
 
